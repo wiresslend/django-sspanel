@@ -4,7 +4,7 @@ from short_url import UrlEncoder
 
 class Encoder:
     def __init__(self):
-        self.encoder = UrlEncoder(alphabet=settings.DEFAULT_ALPHABET)
+        self.encoder = UrlEncoder(alphabet=settings.DEFAULT_ALPHABET, block_size=64)
 
     def int2string(self, value):
         return self.encoder.encode_url(value)

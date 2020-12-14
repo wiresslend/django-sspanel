@@ -89,6 +89,7 @@ def sync_user_ss_traffic_task(node_id, data):
 
 @celery_app.task
 def sync_user_vmess_traffic_task(node_id, data):
+    print(node_id, data)
     node = m.VmessNode.get_or_none_by_node_id(node_id)
     if not node:
         return
@@ -98,7 +99,6 @@ def sync_user_vmess_traffic_task(node_id, data):
     need_clear_cache = False
     trafficlog_model_list = []
     user_model_list = []
-
     for log in data:
         user_id = log["user_id"]
         u = int(log["ut"] * node.enlarge_scale)

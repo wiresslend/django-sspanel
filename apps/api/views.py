@@ -153,6 +153,7 @@ class UserVmessConfigView(View):
     @method_decorator(handle_json_post)
     @method_decorator(api_authorized)
     def post(self, request, node_id):
+        print(request.json, node_id)
         node = VmessNode.get_or_none_by_node_id(node_id)
         if not node:
             return HttpResponseNotFound()
